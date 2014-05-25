@@ -1,0 +1,96 @@
+﻿@model realXP.Models.venue
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>venue</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.venue_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.venue_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.venue_country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.venue_country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.venue_city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.venue_city)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.venue_state)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.venue_state)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.venue_address_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.venue_address_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.venue_address_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.venue_address_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.venue_address_3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.venue_address_3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.venue_postcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.venue_postcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.venue_image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.venue_image)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

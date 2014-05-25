@@ -1,0 +1,106 @@
+﻿@model realXP.Models.venue
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>venue</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.venue_id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.venue_name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.venue_name)
+                @Html.ValidationMessageFor(model => model.venue_name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.venue_country, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.venue_country)
+                @Html.ValidationMessageFor(model => model.venue_country)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.venue_city, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.venue_city)
+                @Html.ValidationMessageFor(model => model.venue_city)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.venue_state, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.venue_state)
+                @Html.ValidationMessageFor(model => model.venue_state)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.venue_address_1, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.venue_address_1)
+                @Html.ValidationMessageFor(model => model.venue_address_1)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.venue_address_2, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.venue_address_2)
+                @Html.ValidationMessageFor(model => model.venue_address_2)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.venue_address_3, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.venue_address_3)
+                @Html.ValidationMessageFor(model => model.venue_address_3)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.venue_postcode, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.venue_postcode)
+                @Html.ValidationMessageFor(model => model.venue_postcode)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.venue_image, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.venue_image)
+                @Html.ValidationMessageFor(model => model.venue_image)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

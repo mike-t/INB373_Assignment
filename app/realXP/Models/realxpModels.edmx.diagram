@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4c4f3d06a7b54277a996f33db6e5d5c8" Name="Diagram1">
+        <EntityTypeShape EntityType="realxpModel.camera" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="realxpModel.event_seats" Width="1.5" PointX="2.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="realxpModel.event" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="realxpModel.seat" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="realxpModel.venue_reviews" Width="1.5" PointX="4.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="realxpModel.venue" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="realxpModel.FK__seats__camera_id__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="realxpModel.FK__events__venue_id__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="realxpModel.FK__seats__venue_id__20C1E124" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
