@@ -68,7 +68,7 @@
             @Html.DisplayFor(modelItem => item.venue_postcode)
         </td>
         <td>
-            <img src="/Content/Images/venues/@Html.DisplayFor(modelItem => item.venue_image)" alt="@Html.DisplayFor(modelItem => item.venue_name)" class="img-thumbnail">
+            <img src="@Url.Content("~/Content/Images/venues/")@Html.DisplayFor(modelItem => item.venue_image)" alt="@Html.DisplayFor(modelItem => item.venue_name)" class="img-thumbnail">
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.venue_id }) |

@@ -3,29 +3,29 @@
 }
 
 <div class="jumbotron">
-    <img class="img-responsive" alt="realxp" src="/Content/Images/realxp-dark.png" />
+    <img class="img-responsive" alt="realxp" src="@Url.Content("~/Content/Images/realxp-dark.png")" />
     <p class="lead" style="margin-left: 40px;">Experience and interact with amazing live events around the world from the comfort of your home.</p>
-    <p><a href="/Events" class="btn btn-primary btn-danger" style="margin-left: 40px;">Find Events Now &raquo;</a></p>
+    <p><a href="@Url.Action("Index","Event")" class="btn btn-primary btn-danger" style="margin-left: 40px;">Find Events Now &raquo;</a></p>
 </div>
 
 <div class="row">
     <div class="col-md-4">
         <h2>Feel the Atmosphere</h2>
-        <p></p><img src="/Content/Images/Atmosphere.png" alt="Atmosphere" class="img-rounded img-responsive"></p>
+        <p></p><img src="@Url.Content("~/Content/Images/Atmosphere.png")" alt="Atmosphere" class="img-rounded img-responsive"></p>
         <p>With realxp you are part of the atmosphere.</p>
         <p>Turn your head to see the fans around you, raise your voice and cheer your team, sing along with your favourite artist...it is all possible with realxp.</p>
-        <p style="margin-top: 20px"><a class="btn btn-danger" href="#">View Events &raquo;</a></p>
+        <p style="margin-top: 20px"><a class="btn btn-danger" href="@Url.Action("Index","Event")">View Events &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2>Cutting Edge</h2>
-        <p><img src="/Content/Images/technology.png" alt="Technology" class="img-rounded img-responsive"></p>
+        <p><img src="@Url.Content("~/Content/Images/technology.png")" alt="Technology" class="img-rounded img-responsive"></p>
         <p>360&deg; HD cameras, blah blah blah</p>
-        <p style="margin-top: 20px"><a class="btn btn-danger" href="#">Learn More &raquo;</a></p>
+        <p style="margin-top: 20px"><a class="btn btn-danger" href="@Url.Action("Index","Home")">Learn More &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2>Worldwide Venues</h2>
-        <p></p><img src="/Content/Images/venue_Arsenal.png" alt="Venues" class="img-rounded img-responsive"></p>
+        <p></p><img src="@Url.Content("~/Content/Images/venue_Arsenal.png")" alt="Venues" class="img-rounded img-responsive"></p>
         <p>With realxp you have access to the best venues around the world, virtually.</p>
-        <p style="margin-top: 20px"><a class="btn btn-danger" href="/Venue">View Venues &raquo;</a></p>
+        <p style="margin-top: 20px"><a class="btn btn-danger" href="@Url.Action("Index","Venue")">View Venues &raquo;</a></p>
     </div>
 </div>
