@@ -1,0 +1,66 @@
+﻿@model realxp.liveevent
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>liveevent</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.liveevent_start_time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.liveevent_start_time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.liveevent_end_time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.liveevent_end_time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.liveevent_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.liveevent_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.liveevent_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.liveevent_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.liveevent_image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.liveevent_image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.venue.venue_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.venue.venue_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.liveeventID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

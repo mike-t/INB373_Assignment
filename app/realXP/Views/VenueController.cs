@@ -6,9 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using realXP.Models;
+using realxp;
 
-namespace realXP.Views
+namespace realxp.Views
 {
     public class VenueController : Controller
     {
@@ -46,7 +46,7 @@ namespace realXP.Views
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="venue_id,venue_name,venue_country,venue_city,venue_state,venue_address_1,venue_address_2,venue_address_3,venue_postcode,venue_image")] venue venue)
+        public ActionResult Create([Bind(Include="venueID,venue_name,venue_country,venue_city,venue_state,venue_address_1,venue_address_2,venue_address_3,venue_postcode,venue_image")] venue venue)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace realXP.Views
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="venue_id,venue_name,venue_country,venue_city,venue_state,venue_address_1,venue_address_2,venue_address_3,venue_postcode,venue_image")] venue venue)
+        public ActionResult Edit([Bind(Include="venueID,venue_name,venue_country,venue_city,venue_state,venue_address_1,venue_address_2,venue_address_3,venue_postcode,venue_image")] venue venue)
         {
             if (ModelState.IsValid)
             {

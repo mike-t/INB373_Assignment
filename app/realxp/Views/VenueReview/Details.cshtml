@@ -1,0 +1,50 @@
+﻿@model realxp.venue_review
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>venue_review</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.venue_review_review)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.venue_review_review)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.venue_review_rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.venue_review_rating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user.user_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.user_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.venue.venue_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.venue.venue_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.venue_reviewID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

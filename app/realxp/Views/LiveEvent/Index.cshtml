@@ -1,0 +1,63 @@
+﻿@model IEnumerable<realxp.liveevent>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.liveevent_start_time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.liveevent_end_time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.liveevent_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.liveevent_description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.liveevent_image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.venue.venue_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.liveevent_start_time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.liveevent_end_time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.liveevent_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.liveevent_description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.liveevent_image)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.venue.venue_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.liveeventID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.liveeventID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.liveeventID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,58 @@
+﻿@model realxp.user
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>user</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.user_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_password_hash)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_password_hash)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_password_salt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_password_salt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_firstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_firstname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_lastname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_lastname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.userID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

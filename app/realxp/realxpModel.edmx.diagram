@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2712ccb53fc54fde919a35c29cfa12b7" Name="Diagram1" ZoomLevel="48">
+        <EntityTypeShape EntityType="realxpContext.camera" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="realxpContext.seat" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="realxpContext.user" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="realxpContext.user_address" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="realxpContext.venue" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="realxpContext.venue_review" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <AssociationConnector Association="realxpContext.FK__seat__cameraID" ManuallyRouted="false" />
+        <AssociationConnector Association="realxpContext.FK__seat__venueID" ManuallyRouted="false" />
+        <AssociationConnector Association="realxpContext.FK__user_address__userID" ManuallyRouted="false" />
+        <AssociationConnector Association="realxpContext.FK__venue_review__userID" ManuallyRouted="false" />
+        <AssociationConnector Association="realxpContext.FK__venue_review__venueID" ManuallyRouted="false" />
+        <AssociationConnector Association="realxpContext.FK__event__venueID1" />
+        <EntityTypeShape EntityType="realxpContext.liveevent" Width="1.5" PointX="3" PointY="5" />
+        <AssociationConnector Association="realxpContext.FK__event__venueID1" />
+        <EntityTypeShape EntityType="realxpContext.user_purchase" Width="1.5" PointX="5.25" PointY="7" />
+        <AssociationConnector Association="realxpContext.FK__user_purchase__seatID" />
+        <AssociationConnector Association="realxpContext.FK__user_purchase__userID" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

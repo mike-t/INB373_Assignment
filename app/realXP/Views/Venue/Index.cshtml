@@ -1,13 +1,13 @@
-﻿@model IEnumerable<realXP.Models.venue>
+﻿@model IEnumerable<realxp.venue>
 
 @{
-    ViewBag.Title = "Venues";
+    ViewBag.Title = "Index";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Add a Venue", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -36,7 +36,7 @@
             @Html.DisplayNameFor(model => model.venue_postcode)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.venue_image)           
+            @Html.DisplayNameFor(model => model.venue_image)
         </th>
         <th></th>
     </tr>
@@ -68,12 +68,12 @@
             @Html.DisplayFor(modelItem => item.venue_postcode)
         </td>
         <td>
-            <img src="@Url.Content("~/Content/Images/venues/")@Html.DisplayFor(modelItem => item.venue_image)" alt="@Html.DisplayFor(modelItem => item.venue_name)" class="img-thumbnail">
+            @Html.DisplayFor(modelItem => item.venue_image)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.venue_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.venue_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.venue_id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.venueID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.venueID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.venueID })
         </td>
     </tr>
 }

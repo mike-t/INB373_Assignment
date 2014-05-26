@@ -1,0 +1,678 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="realxpContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="camera">
+          <Key>
+            <PropertyRef Name="cameraID" />
+          </Key>
+          <Property Name="cameraID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="camera_brand" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="camera_model" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="camera_max_seats" Type="int" Nullable="false" />
+          <Property Name="camera_resolution_x" Type="int" Nullable="false" />
+          <Property Name="camera_resolution_y" Type="int" Nullable="false" />
+          <Property Name="camera_has_audio" Type="tinyint" Nullable="false" />
+          <Property Name="camera_fps" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="liveevent">
+          <Key>
+            <PropertyRef Name="liveeventID" />
+          </Key>
+          <Property Name="liveeventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="venueID" Type="int" Nullable="false" />
+          <Property Name="liveevent_start_time" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="liveevent_end_time" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="liveevent_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="liveevent_description" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="liveevent_image" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="seat">
+          <Key>
+            <PropertyRef Name="seatID" />
+          </Key>
+          <Property Name="seatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cameraID" Type="int" Nullable="false" />
+          <Property Name="venueID" Type="int" Nullable="false" />
+          <Property Name="seat_capacity" Type="int" Nullable="false" />
+          <Property Name="seat_number" Type="int" />
+          <Property Name="seat_row" Type="nvarchar" MaxLength="50" />
+          <Property Name="seat_section" Type="nvarchar" MaxLength="50" />
+          <Property Name="seat_description" Type="nvarchar" MaxLength="200" />
+          <Property Name="seat_view_image" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="user_password_hash" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="user_password_salt" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="user_firstname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="user_lastname" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_address">
+          <Key>
+            <PropertyRef Name="user_addressID" />
+          </Key>
+          <Property Name="user_addressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userID" Type="int" Nullable="false" />
+          <Property Name="user_address_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="user_address_country" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="user_address_city" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="user_address_state" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_address_line1" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="user_address_line2" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="user_address_line3" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_address_line4" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_address_postcode" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_purchase">
+          <Key>
+            <PropertyRef Name="user_purchaseID" />
+          </Key>
+          <Property Name="user_purchaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userID" Type="int" Nullable="false" />
+          <Property Name="liveeventID" Type="int" Nullable="false" />
+          <Property Name="seatID" Type="int" Nullable="false" />
+          <Property Name="user_purchase_timestamp" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="venue">
+          <Key>
+            <PropertyRef Name="venueID" />
+          </Key>
+          <Property Name="venueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="venue_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="venue_country" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="venue_city" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="venue_state" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="venue_address_1" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="venue_address_2" Type="nvarchar" MaxLength="100" />
+          <Property Name="venue_address_3" Type="nvarchar" MaxLength="100" />
+          <Property Name="venue_postcode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="venue_image" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="venue_review">
+          <Key>
+            <PropertyRef Name="venue_reviewID" />
+          </Key>
+          <Property Name="venue_reviewID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="venueID" Type="int" Nullable="false" />
+          <Property Name="userID" Type="int" Nullable="false" />
+          <Property Name="venue_review_review" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="venue_review_rating" Type="tinyint" />
+        </EntityType>
+        <Association Name="FK__liveevent__venueID">
+          <End Role="venue" Type="Self.venue" Multiplicity="1" />
+          <End Role="liveevent" Type="Self.liveevent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="venue">
+              <PropertyRef Name="venueID" />
+            </Principal>
+            <Dependent Role="liveevent">
+              <PropertyRef Name="venueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__seat__cameraID">
+          <End Role="camera" Type="Self.camera" Multiplicity="1" />
+          <End Role="seat" Type="Self.seat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="camera">
+              <PropertyRef Name="cameraID" />
+            </Principal>
+            <Dependent Role="seat">
+              <PropertyRef Name="cameraID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__seat__venueID">
+          <End Role="venue" Type="Self.venue" Multiplicity="1" />
+          <End Role="seat" Type="Self.seat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="venue">
+              <PropertyRef Name="venueID" />
+            </Principal>
+            <Dependent Role="seat">
+              <PropertyRef Name="venueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__user_address__userID">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="user_address" Type="Self.user_address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="user_address">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__user_purchase__liveeventID">
+          <End Role="liveevent" Type="Self.liveevent" Multiplicity="1" />
+          <End Role="user_purchase" Type="Self.user_purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="liveevent">
+              <PropertyRef Name="liveeventID" />
+            </Principal>
+            <Dependent Role="user_purchase">
+              <PropertyRef Name="liveeventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__user_purchase__seatID">
+          <End Role="seat" Type="Self.seat" Multiplicity="1" />
+          <End Role="user_purchase" Type="Self.user_purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="seat">
+              <PropertyRef Name="seatID" />
+            </Principal>
+            <Dependent Role="user_purchase">
+              <PropertyRef Name="seatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__user_purchase__userID">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="user_purchase" Type="Self.user_purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="user_purchase">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__venue_review__userID">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="venue_review" Type="Self.venue_review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="venue_review">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__venue_review__venueID">
+          <End Role="venue" Type="Self.venue" Multiplicity="1" />
+          <End Role="venue_review" Type="Self.venue_review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="venue">
+              <PropertyRef Name="venueID" />
+            </Principal>
+            <Dependent Role="venue_review">
+              <PropertyRef Name="venueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="realxpContextStoreContainer">
+          <EntitySet Name="camera" EntityType="Self.camera" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="liveevent" EntityType="Self.liveevent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seat" EntityType="Self.seat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_address" EntityType="Self.user_address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_purchase" EntityType="Self.user_purchase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="venue" EntityType="Self.venue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="venue_review" EntityType="Self.venue_review" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__liveevent__venueID" Association="Self.FK__liveevent__venueID">
+            <End Role="venue" EntitySet="venue" />
+            <End Role="liveevent" EntitySet="liveevent" />
+          </AssociationSet>
+          <AssociationSet Name="FK__seat__cameraID" Association="Self.FK__seat__cameraID">
+            <End Role="camera" EntitySet="camera" />
+            <End Role="seat" EntitySet="seat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__seat__venueID" Association="Self.FK__seat__venueID">
+            <End Role="venue" EntitySet="venue" />
+            <End Role="seat" EntitySet="seat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__user_address__userID" Association="Self.FK__user_address__userID">
+            <End Role="user" EntitySet="user" />
+            <End Role="user_address" EntitySet="user_address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__user_purchase__liveeventID" Association="Self.FK__user_purchase__liveeventID">
+            <End Role="liveevent" EntitySet="liveevent" />
+            <End Role="user_purchase" EntitySet="user_purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__user_purchase__seatID" Association="Self.FK__user_purchase__seatID">
+            <End Role="seat" EntitySet="seat" />
+            <End Role="user_purchase" EntitySet="user_purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__user_purchase__userID" Association="Self.FK__user_purchase__userID">
+            <End Role="user" EntitySet="user" />
+            <End Role="user_purchase" EntitySet="user_purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__venue_review__userID" Association="Self.FK__venue_review__userID">
+            <End Role="user" EntitySet="user" />
+            <End Role="venue_review" EntitySet="venue_review" />
+          </AssociationSet>
+          <AssociationSet Name="FK__venue_review__venueID" Association="Self.FK__venue_review__venueID">
+            <End Role="venue" EntitySet="venue" />
+            <End Role="venue_review" EntitySet="venue_review" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="realxpContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="camera">
+          <Key>
+            <PropertyRef Name="cameraID" />
+          </Key>
+          <Property Name="cameraID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="camera_brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="camera_model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="camera_max_seats" Type="Int32" Nullable="false" />
+          <Property Name="camera_resolution_x" Type="Int32" Nullable="false" />
+          <Property Name="camera_resolution_y" Type="Int32" Nullable="false" />
+          <Property Name="camera_has_audio" Type="Byte" Nullable="false" />
+          <Property Name="camera_fps" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="seats" Relationship="Self.FK__seat__cameraID" FromRole="camera" ToRole="seat" />
+        </EntityType>
+        <EntityType Name="seat">
+          <Key>
+            <PropertyRef Name="seatID" />
+          </Key>
+          <Property Name="seatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cameraID" Type="Int32" Nullable="false" />
+          <Property Name="venueID" Type="Int32" Nullable="false" />
+          <Property Name="seat_capacity" Type="Int32" Nullable="false" />
+          <Property Name="seat_number" Type="Int32" />
+          <Property Name="seat_row" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="seat_section" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="seat_description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="seat_view_image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="camera" Relationship="Self.FK__seat__cameraID" FromRole="seat" ToRole="camera" />
+          <NavigationProperty Name="venue" Relationship="Self.FK__seat__venueID" FromRole="seat" ToRole="venue" />
+          <NavigationProperty Name="user_purchase" Relationship="realxpContext.FK__user_purchase__seatID" FromRole="seat" ToRole="user_purchase" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_password_hash" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_password_salt" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="user_address" Relationship="Self.FK__user_address__userID" FromRole="user" ToRole="user_address" />
+          <NavigationProperty Name="venue_review" Relationship="Self.FK__venue_review__userID" FromRole="user" ToRole="venue_review" />
+          <NavigationProperty Name="user_purchase" Relationship="realxpContext.FK__user_purchase__userID" FromRole="user" ToRole="user_purchase" />
+        </EntityType>
+        <EntityType Name="user_address">
+          <Key>
+            <PropertyRef Name="user_addressID" />
+          </Key>
+          <Property Name="user_addressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="user_address_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_address_country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_address_city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_address_state" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_address_line1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_address_line2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_address_line3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_address_line4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_address_postcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK__user_address__userID" FromRole="user_address" ToRole="user" />
+        </EntityType>
+        <EntityType Name="venue">
+          <Key>
+            <PropertyRef Name="venueID" />
+          </Key>
+          <Property Name="venueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="venue_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="venue_country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="venue_city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="venue_state" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="venue_address_1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="venue_address_2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="venue_address_3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="venue_postcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="venue_image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="seats" Relationship="Self.FK__seat__venueID" FromRole="venue" ToRole="seat" />
+          <NavigationProperty Name="venue_review" Relationship="Self.FK__venue_review__venueID" FromRole="venue" ToRole="venue_review" />
+          <NavigationProperty Name="liveevents" Relationship="realxpContext.FK__event__venueID1" FromRole="venue" ToRole="liveevent1" />
+        </EntityType>
+        <EntityType Name="venue_review">
+          <Key>
+            <PropertyRef Name="venue_reviewID" />
+          </Key>
+          <Property Name="venue_reviewID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="venueID" Type="Int32" Nullable="false" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="venue_review_review" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="venue_review_rating" Type="Byte" />
+          <NavigationProperty Name="user" Relationship="Self.FK__venue_review__userID" FromRole="venue_review" ToRole="user" />
+          <NavigationProperty Name="venue" Relationship="Self.FK__venue_review__venueID" FromRole="venue_review" ToRole="venue" />
+        </EntityType>
+        <Association Name="FK__seat__cameraID">
+          <End Role="camera" Type="Self.camera" Multiplicity="1" />
+          <End Role="seat" Type="Self.seat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="camera">
+              <PropertyRef Name="cameraID" />
+            </Principal>
+            <Dependent Role="seat">
+              <PropertyRef Name="cameraID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__seat__venueID">
+          <End Role="venue" Type="Self.venue" Multiplicity="1" />
+          <End Role="seat" Type="Self.seat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="venue">
+              <PropertyRef Name="venueID" />
+            </Principal>
+            <Dependent Role="seat">
+              <PropertyRef Name="venueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__user_address__userID">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="user_address" Type="Self.user_address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="user_address">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__venue_review__userID">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="venue_review" Type="Self.venue_review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="venue_review">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__venue_review__venueID">
+          <End Role="venue" Type="Self.venue" Multiplicity="1" />
+          <End Role="venue_review" Type="Self.venue_review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="venue">
+              <PropertyRef Name="venueID" />
+            </Principal>
+            <Dependent Role="venue_review">
+              <PropertyRef Name="venueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="realxpEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cameras" EntityType="Self.camera" />
+          <EntitySet Name="seats" EntityType="Self.seat" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="user_address" EntityType="Self.user_address" />
+          <EntitySet Name="venues" EntityType="Self.venue" />
+          <EntitySet Name="venue_review" EntityType="Self.venue_review" />
+          <AssociationSet Name="FK__seat__cameraID" Association="Self.FK__seat__cameraID">
+            <End Role="camera" EntitySet="cameras" />
+            <End Role="seat" EntitySet="seats" />
+          </AssociationSet>
+          <AssociationSet Name="FK__seat__venueID" Association="Self.FK__seat__venueID">
+            <End Role="venue" EntitySet="venues" />
+            <End Role="seat" EntitySet="seats" />
+          </AssociationSet>
+          <AssociationSet Name="FK__user_address__userID" Association="Self.FK__user_address__userID">
+            <End Role="user" EntitySet="users" />
+            <End Role="user_address" EntitySet="user_address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__venue_review__userID" Association="Self.FK__venue_review__userID">
+            <End Role="user" EntitySet="users" />
+            <End Role="venue_review" EntitySet="venue_review" />
+          </AssociationSet>
+          <AssociationSet Name="FK__venue_review__venueID" Association="Self.FK__venue_review__venueID">
+            <End Role="venue" EntitySet="venues" />
+            <End Role="venue_review" EntitySet="venue_review" />
+          </AssociationSet>
+          <EntitySet Name="liveevents" EntityType="realxpContext.liveevent" />
+          <AssociationSet Name="FK__event__venueID1" Association="realxpContext.FK__event__venueID1">
+            <End Role="venue" EntitySet="venues" />
+            <End Role="liveevent1" EntitySet="liveevents" />
+          </AssociationSet>
+          <EntitySet Name="user_purchase" EntityType="realxpContext.user_purchase" />
+          <AssociationSet Name="FK__user_purchase__liveeventID" Association="realxpContext.FK__user_purchase__liveeventID">
+            <End Role="liveevent" EntitySet="liveevents" />
+            <End Role="user_purchase" EntitySet="user_purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__user_purchase__seatID" Association="realxpContext.FK__user_purchase__seatID">
+            <End Role="seat" EntitySet="seats" />
+            <End Role="user_purchase" EntitySet="user_purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__user_purchase__userID" Association="realxpContext.FK__user_purchase__userID">
+            <End Role="user" EntitySet="users" />
+            <End Role="user_purchase" EntitySet="user_purchase" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="liveevent">
+          <Key>
+            <PropertyRef Name="liveeventID" />
+          </Key>
+          <Property Name="liveeventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="venueID" Type="Int32" Nullable="false" />
+          <Property Name="liveevent_start_time" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="liveevent_end_time" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="liveevent_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="liveevent_description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="liveevent_image" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="venue" Relationship="realxpContext.FK__event__venueID1" FromRole="liveevent1" ToRole="venue" />
+          <NavigationProperty Name="user_purchase" Relationship="realxpContext.FK__user_purchase__liveeventID" FromRole="liveevent" ToRole="user_purchase" />
+        </EntityType>
+        <Association Name="FK__event__venueID1">
+          <End Type="realxpContext.venue" Role="venue" Multiplicity="1" />
+          <End Type="realxpContext.liveevent" Role="liveevent1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="venue">
+              <PropertyRef Name="venueID" />
+            </Principal>
+            <Dependent Role="liveevent1">
+              <PropertyRef Name="venueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="user_purchase">
+          <Key>
+            <PropertyRef Name="user_purchaseID" />
+          </Key>
+          <Property Name="user_purchaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="liveeventID" Type="Int32" Nullable="false" />
+          <Property Name="seatID" Type="Int32" Nullable="false" />
+          <Property Name="user_purchase_timestamp" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="liveevent" Relationship="realxpContext.FK__user_purchase__liveeventID" FromRole="user_purchase" ToRole="liveevent" />
+          <NavigationProperty Name="seat" Relationship="realxpContext.FK__user_purchase__seatID" FromRole="user_purchase" ToRole="seat" />
+          <NavigationProperty Name="user" Relationship="realxpContext.FK__user_purchase__userID" FromRole="user_purchase" ToRole="user" />
+        </EntityType>
+        <Association Name="FK__user_purchase__liveeventID">
+          <End Type="realxpContext.liveevent" Role="liveevent" Multiplicity="1" />
+          <End Type="realxpContext.user_purchase" Role="user_purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="liveevent">
+              <PropertyRef Name="liveeventID" />
+            </Principal>
+            <Dependent Role="user_purchase">
+              <PropertyRef Name="liveeventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__user_purchase__seatID">
+          <End Type="realxpContext.seat" Role="seat" Multiplicity="1" />
+          <End Type="realxpContext.user_purchase" Role="user_purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="seat">
+              <PropertyRef Name="seatID" />
+            </Principal>
+            <Dependent Role="user_purchase">
+              <PropertyRef Name="seatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__user_purchase__userID">
+          <End Type="realxpContext.user" Role="user" Multiplicity="1" />
+          <End Type="realxpContext.user_purchase" Role="user_purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="user_purchase">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="realxpContextStoreContainer" CdmEntityContainer="realxpEntities">
+          <EntitySetMapping Name="cameras">
+            <EntityTypeMapping TypeName="realxpContext.camera">
+              <MappingFragment StoreEntitySet="camera">
+                <ScalarProperty Name="cameraID" ColumnName="cameraID" />
+                <ScalarProperty Name="camera_brand" ColumnName="camera_brand" />
+                <ScalarProperty Name="camera_model" ColumnName="camera_model" />
+                <ScalarProperty Name="camera_max_seats" ColumnName="camera_max_seats" />
+                <ScalarProperty Name="camera_resolution_x" ColumnName="camera_resolution_x" />
+                <ScalarProperty Name="camera_resolution_y" ColumnName="camera_resolution_y" />
+                <ScalarProperty Name="camera_has_audio" ColumnName="camera_has_audio" />
+                <ScalarProperty Name="camera_fps" ColumnName="camera_fps" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seats">
+            <EntityTypeMapping TypeName="realxpContext.seat">
+              <MappingFragment StoreEntitySet="seat">
+                <ScalarProperty Name="seatID" ColumnName="seatID" />
+                <ScalarProperty Name="cameraID" ColumnName="cameraID" />
+                <ScalarProperty Name="venueID" ColumnName="venueID" />
+                <ScalarProperty Name="seat_capacity" ColumnName="seat_capacity" />
+                <ScalarProperty Name="seat_number" ColumnName="seat_number" />
+                <ScalarProperty Name="seat_row" ColumnName="seat_row" />
+                <ScalarProperty Name="seat_section" ColumnName="seat_section" />
+                <ScalarProperty Name="seat_description" ColumnName="seat_description" />
+                <ScalarProperty Name="seat_view_image" ColumnName="seat_view_image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="realxpContext.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="user_password_hash" ColumnName="user_password_hash" />
+                <ScalarProperty Name="user_password_salt" ColumnName="user_password_salt" />
+                <ScalarProperty Name="user_firstname" ColumnName="user_firstname" />
+                <ScalarProperty Name="user_lastname" ColumnName="user_lastname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_address">
+            <EntityTypeMapping TypeName="realxpContext.user_address">
+              <MappingFragment StoreEntitySet="user_address">
+                <ScalarProperty Name="user_addressID" ColumnName="user_addressID" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="user_address_name" ColumnName="user_address_name" />
+                <ScalarProperty Name="user_address_country" ColumnName="user_address_country" />
+                <ScalarProperty Name="user_address_city" ColumnName="user_address_city" />
+                <ScalarProperty Name="user_address_state" ColumnName="user_address_state" />
+                <ScalarProperty Name="user_address_line1" ColumnName="user_address_line1" />
+                <ScalarProperty Name="user_address_line2" ColumnName="user_address_line2" />
+                <ScalarProperty Name="user_address_line3" ColumnName="user_address_line3" />
+                <ScalarProperty Name="user_address_line4" ColumnName="user_address_line4" />
+                <ScalarProperty Name="user_address_postcode" ColumnName="user_address_postcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="venues">
+            <EntityTypeMapping TypeName="realxpContext.venue">
+              <MappingFragment StoreEntitySet="venue">
+                <ScalarProperty Name="venueID" ColumnName="venueID" />
+                <ScalarProperty Name="venue_name" ColumnName="venue_name" />
+                <ScalarProperty Name="venue_country" ColumnName="venue_country" />
+                <ScalarProperty Name="venue_city" ColumnName="venue_city" />
+                <ScalarProperty Name="venue_state" ColumnName="venue_state" />
+                <ScalarProperty Name="venue_address_1" ColumnName="venue_address_1" />
+                <ScalarProperty Name="venue_address_2" ColumnName="venue_address_2" />
+                <ScalarProperty Name="venue_address_3" ColumnName="venue_address_3" />
+                <ScalarProperty Name="venue_postcode" ColumnName="venue_postcode" />
+                <ScalarProperty Name="venue_image" ColumnName="venue_image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="venue_review">
+            <EntityTypeMapping TypeName="realxpContext.venue_review">
+              <MappingFragment StoreEntitySet="venue_review">
+                <ScalarProperty Name="venue_reviewID" ColumnName="venue_reviewID" />
+                <ScalarProperty Name="venueID" ColumnName="venueID" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="venue_review_review" ColumnName="venue_review_review" />
+                <ScalarProperty Name="venue_review_rating" ColumnName="venue_review_rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="liveevents">
+            <EntityTypeMapping TypeName="realxpContext.liveevent">
+              <MappingFragment StoreEntitySet="liveevent">
+                <ScalarProperty Name="liveevent_image" ColumnName="liveevent_image" />
+                <ScalarProperty Name="liveevent_description" ColumnName="liveevent_description" />
+                <ScalarProperty Name="liveevent_name" ColumnName="liveevent_name" />
+                <ScalarProperty Name="liveevent_end_time" ColumnName="liveevent_end_time" />
+                <ScalarProperty Name="liveevent_start_time" ColumnName="liveevent_start_time" />
+                <ScalarProperty Name="venueID" ColumnName="venueID" />
+                <ScalarProperty Name="liveeventID" ColumnName="liveeventID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_purchase">
+            <EntityTypeMapping TypeName="realxpContext.user_purchase">
+              <MappingFragment StoreEntitySet="user_purchase">
+                <ScalarProperty Name="user_purchase_timestamp" ColumnName="user_purchase_timestamp" />
+                <ScalarProperty Name="seatID" ColumnName="seatID" />
+                <ScalarProperty Name="liveeventID" ColumnName="liveeventID" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="user_purchaseID" ColumnName="user_purchaseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

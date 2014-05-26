@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="realxpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cameras">
+          <Key>
+            <PropertyRef Name="camera_id" />
+          </Key>
+          <Property Name="camera_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="camera_brand" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="camera_model" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="camera_max_seats" Type="int" Nullable="false" />
+          <Property Name="camera_resolution_x" Type="int" Nullable="false" />
+          <Property Name="camera_resolution_y" Type="int" Nullable="false" />
+          <Property Name="camera_has_audio" Type="tinyint" Nullable="false" />
+          <Property Name="camera_fps" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="event_seats">
+          <Key>
+            <PropertyRef Name="event_seat_id" />
+          </Key>
+          <Property Name="event_seat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="event_id" Type="int" Nullable="false" />
+          <Property Name="seat_id" Type="int" Nullable="false" />
+          <Property Name="event_seat_sell_capacity" Type="int" Nullable="false" />
+          <Property Name="event_seat_price" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="events">
+          <Key>
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="event_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="venue_id" Type="int" Nullable="false" />
+          <Property Name="event_start_time" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="event_end_time" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="event_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="event_description" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="event_image" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="payment_methods">
+          <Key>
+            <PropertyRef Name="payment_method_id" />
+          </Key>
+          <Property Name="payment_method_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="payment_method_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="payments">
+          <Key>
+            <PropertyRef Name="payment_id" />
+          </Key>
+          <Property Name="payment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="payment_method_id" Type="int" Nullable="false" />
+          <Property Name="payment_successful" Type="tinyint" Nullable="false" />
+          <Property Name="payment_gateway_transaction_reference" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="seats">
+          <Key>
+            <PropertyRef Name="seat_id" />
+          </Key>
+          <Property Name="seat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="camera_id" Type="int" Nullable="false" />
+          <Property Name="venue_id" Type="int" Nullable="false" />
+          <Property Name="seat_capacity" Type="int" Nullable="false" />
+          <Property Name="seat_number" Type="int" />
+          <Property Name="seat_row" Type="nvarchar" MaxLength="50" />
+          <Property Name="seat_section" Type="nvarchar" MaxLength="50" />
+          <Property Name="seat_description" Type="nvarchar" MaxLength="200" />
+          <Property Name="seat_view_image" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="user_addresses">
+          <Key>
+            <PropertyRef Name="user_address_id" />
+          </Key>
+          <Property Name="user_address_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="user_address_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="user_address_country" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="user_address_city" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="user_address_state" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_address_line1" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="user_address_line2" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="user_address_line3" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_address_line4" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_address_postcode" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_logs">
+          <Key>
+            <PropertyRef Name="user_logs_id" />
+          </Key>
+          <Property Name="user_logs_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="users_logs_action" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="users_logs_timestamp" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_purchases">
+          <Key>
+            <PropertyRef Name="user_purchase_id" />
+          </Key>
+          <Property Name="user_purchase_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="event_seats_id" Type="int" Nullable="false" />
+          <Property Name="payment_id" Type="int" Nullable="false" />
+          <Property Name="user_purchase_timestamp" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="user_password_hash" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="user_password_salt" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="user_firstname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="user_lastname" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="venue_reviews">
+          <Key>
+            <PropertyRef Name="venue_review_id" />
+          </Key>
+          <Property Name="venue_review_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="venue_id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="venue_review_review" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="venue_review_rating" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="venues">
+          <Key>
+            <PropertyRef Name="venue_id" />
+          </Key>
+          <Property Name="venue_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="venue_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="venue_country" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="venue_city" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="venue_state" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="venue_address_1" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="venue_address_2" Type="nvarchar" MaxLength="100" />
+          <Property Name="venue_address_3" Type="nvarchar" MaxLength="100" />
+          <Property Name="venue_postcode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="venue_image" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="realxpModelStoreContainer">
+          <EntitySet Name="cameras" EntityType="Self.cameras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="event_seats" EntityType="Self.event_seats" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="events" EntityType="Self.events" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="payment_methods" EntityType="Self.payment_methods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="payments" EntityType="Self.payments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seats" EntityType="Self.seats" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_addresses" EntityType="Self.user_addresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_logs" EntityType="Self.user_logs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_purchases" EntityType="Self.user_purchases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="venue_reviews" EntityType="Self.venue_reviews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="venues" EntityType="Self.venues" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="realxpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="camera">
+          <Key>
+            <PropertyRef Name="camera_id" />
+          </Key>
+          <Property Name="camera_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="camera_brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="camera_model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="camera_max_seats" Type="Int32" Nullable="false" />
+          <Property Name="camera_resolution_x" Type="Int32" Nullable="false" />
+          <Property Name="camera_resolution_y" Type="Int32" Nullable="false" />
+          <Property Name="camera_has_audio" Type="Byte" Nullable="false" />
+          <Property Name="camera_fps" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="event_seats">
+          <Key>
+            <PropertyRef Name="event_seat_id" />
+          </Key>
+          <Property Name="event_seat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="event_id" Type="Int32" Nullable="false" />
+          <Property Name="seat_id" Type="Int32" Nullable="false" />
+          <Property Name="event_seat_sell_capacity" Type="Int32" Nullable="false" />
+          <Property Name="event_seat_price" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="event">
+          <Key>
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="event_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="venue_id" Type="Int32" Nullable="false" />
+          <Property Name="event_start_time" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="event_end_time" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="event_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="event_description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="event_image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="payment_methods">
+          <Key>
+            <PropertyRef Name="payment_method_id" />
+          </Key>
+          <Property Name="payment_method_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="payment_method_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="payment">
+          <Key>
+            <PropertyRef Name="payment_id" />
+          </Key>
+          <Property Name="payment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="payment_method_id" Type="Int32" Nullable="false" />
+          <Property Name="payment_successful" Type="Byte" Nullable="false" />
+          <Property Name="payment_gateway_transaction_reference" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="seat">
+          <Key>
+            <PropertyRef Name="seat_id" />
+          </Key>
+          <Property Name="seat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="camera_id" Type="Int32" Nullable="false" />
+          <Property Name="venue_id" Type="Int32" Nullable="false" />
+          <Property Name="seat_capacity" Type="Int32" Nullable="false" />
+          <Property Name="seat_number" Type="Int32" />
+          <Property Name="seat_row" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="seat_section" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="seat_description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="seat_view_image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="user_addresses">
+          <Key>
+            <PropertyRef Name="user_address_id" />
+          </Key>
+          <Property Name="user_address_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="user_address_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_address_country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_address_city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_address_state" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_address_line1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_address_line2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_address_line3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_address_line4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_address_postcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_logs">
+          <Key>
+            <PropertyRef Name="user_logs_id" />
+          </Key>
+          <Property Name="user_logs_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="users_logs_action" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="users_logs_timestamp" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="user_purchases">
+          <Key>
+            <PropertyRef Name="user_purchase_id" />
+          </Key>
+          <Property Name="user_purchase_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="event_seats_id" Type="Int32" Nullable="false" />
+          <Property Name="payment_id" Type="Int32" Nullable="false" />
+          <Property Name="user_purchase_timestamp" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_password_hash" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_password_salt" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="user_lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="venue_reviews">
+          <Key>
+            <PropertyRef Name="venue_review_id" />
+          </Key>
+          <Property Name="venue_review_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="venue_id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="venue_review_review" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="venue_review_rating" Type="Byte" />
+        </EntityType>
+        <EntityType Name="venue">
+          <Key>
+            <PropertyRef Name="venue_id" />
+          </Key>
+          <Property Name="venue_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="venue_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="venue_country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="venue_city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="venue_state" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="venue_address_1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="venue_address_2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="venue_address_3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="venue_postcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="venue_image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="realxpEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cameras" EntityType="Self.camera" />
+          <EntitySet Name="event_seats" EntityType="Self.event_seats" />
+          <EntitySet Name="events" EntityType="Self.event" />
+          <EntitySet Name="payment_methods" EntityType="Self.payment_methods" />
+          <EntitySet Name="payments" EntityType="Self.payment" />
+          <EntitySet Name="seats" EntityType="Self.seat" />
+          <EntitySet Name="user_addresses" EntityType="Self.user_addresses" />
+          <EntitySet Name="user_logs" EntityType="Self.user_logs" />
+          <EntitySet Name="user_purchases" EntityType="Self.user_purchases" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="venue_reviews" EntityType="Self.venue_reviews" />
+          <EntitySet Name="venues" EntityType="Self.venue" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="realxpModelStoreContainer" CdmEntityContainer="realxpEntities1">
+          <EntitySetMapping Name="cameras">
+            <EntityTypeMapping TypeName="realxpModel.camera">
+              <MappingFragment StoreEntitySet="cameras">
+                <ScalarProperty Name="camera_id" ColumnName="camera_id" />
+                <ScalarProperty Name="camera_brand" ColumnName="camera_brand" />
+                <ScalarProperty Name="camera_model" ColumnName="camera_model" />
+                <ScalarProperty Name="camera_max_seats" ColumnName="camera_max_seats" />
+                <ScalarProperty Name="camera_resolution_x" ColumnName="camera_resolution_x" />
+                <ScalarProperty Name="camera_resolution_y" ColumnName="camera_resolution_y" />
+                <ScalarProperty Name="camera_has_audio" ColumnName="camera_has_audio" />
+                <ScalarProperty Name="camera_fps" ColumnName="camera_fps" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="event_seats">
+            <EntityTypeMapping TypeName="realxpModel.event_seats">
+              <MappingFragment StoreEntitySet="event_seats">
+                <ScalarProperty Name="event_seat_id" ColumnName="event_seat_id" />
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+                <ScalarProperty Name="seat_id" ColumnName="seat_id" />
+                <ScalarProperty Name="event_seat_sell_capacity" ColumnName="event_seat_sell_capacity" />
+                <ScalarProperty Name="event_seat_price" ColumnName="event_seat_price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="events">
+            <EntityTypeMapping TypeName="realxpModel.event">
+              <MappingFragment StoreEntitySet="events">
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+                <ScalarProperty Name="venue_id" ColumnName="venue_id" />
+                <ScalarProperty Name="event_start_time" ColumnName="event_start_time" />
+                <ScalarProperty Name="event_end_time" ColumnName="event_end_time" />
+                <ScalarProperty Name="event_name" ColumnName="event_name" />
+                <ScalarProperty Name="event_description" ColumnName="event_description" />
+                <ScalarProperty Name="event_image" ColumnName="event_image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payment_methods">
+            <EntityTypeMapping TypeName="realxpModel.payment_methods">
+              <MappingFragment StoreEntitySet="payment_methods">
+                <ScalarProperty Name="payment_method_id" ColumnName="payment_method_id" />
+                <ScalarProperty Name="payment_method_name" ColumnName="payment_method_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payments">
+            <EntityTypeMapping TypeName="realxpModel.payment">
+              <MappingFragment StoreEntitySet="payments">
+                <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+                <ScalarProperty Name="payment_method_id" ColumnName="payment_method_id" />
+                <ScalarProperty Name="payment_successful" ColumnName="payment_successful" />
+                <ScalarProperty Name="payment_gateway_transaction_reference" ColumnName="payment_gateway_transaction_reference" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seats">
+            <EntityTypeMapping TypeName="realxpModel.seat">
+              <MappingFragment StoreEntitySet="seats">
+                <ScalarProperty Name="seat_id" ColumnName="seat_id" />
+                <ScalarProperty Name="camera_id" ColumnName="camera_id" />
+                <ScalarProperty Name="venue_id" ColumnName="venue_id" />
+                <ScalarProperty Name="seat_capacity" ColumnName="seat_capacity" />
+                <ScalarProperty Name="seat_number" ColumnName="seat_number" />
+                <ScalarProperty Name="seat_row" ColumnName="seat_row" />
+                <ScalarProperty Name="seat_section" ColumnName="seat_section" />
+                <ScalarProperty Name="seat_description" ColumnName="seat_description" />
+                <ScalarProperty Name="seat_view_image" ColumnName="seat_view_image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_addresses">
+            <EntityTypeMapping TypeName="realxpModel.user_addresses">
+              <MappingFragment StoreEntitySet="user_addresses">
+                <ScalarProperty Name="user_address_id" ColumnName="user_address_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_address_name" ColumnName="user_address_name" />
+                <ScalarProperty Name="user_address_country" ColumnName="user_address_country" />
+                <ScalarProperty Name="user_address_city" ColumnName="user_address_city" />
+                <ScalarProperty Name="user_address_state" ColumnName="user_address_state" />
+                <ScalarProperty Name="user_address_line1" ColumnName="user_address_line1" />
+                <ScalarProperty Name="user_address_line2" ColumnName="user_address_line2" />
+                <ScalarProperty Name="user_address_line3" ColumnName="user_address_line3" />
+                <ScalarProperty Name="user_address_line4" ColumnName="user_address_line4" />
+                <ScalarProperty Name="user_address_postcode" ColumnName="user_address_postcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_logs">
+            <EntityTypeMapping TypeName="realxpModel.user_logs">
+              <MappingFragment StoreEntitySet="user_logs">
+                <ScalarProperty Name="user_logs_id" ColumnName="user_logs_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="users_logs_action" ColumnName="users_logs_action" />
+                <ScalarProperty Name="users_logs_timestamp" ColumnName="users_logs_timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_purchases">
+            <EntityTypeMapping TypeName="realxpModel.user_purchases">
+              <MappingFragment StoreEntitySet="user_purchases">
+                <ScalarProperty Name="user_purchase_id" ColumnName="user_purchase_id" />
+                <ScalarProperty Name="event_seats_id" ColumnName="event_seats_id" />
+                <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+                <ScalarProperty Name="user_purchase_timestamp" ColumnName="user_purchase_timestamp" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="realxpModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="user_password_hash" ColumnName="user_password_hash" />
+                <ScalarProperty Name="user_password_salt" ColumnName="user_password_salt" />
+                <ScalarProperty Name="user_firstname" ColumnName="user_firstname" />
+                <ScalarProperty Name="user_lastname" ColumnName="user_lastname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="venue_reviews">
+            <EntityTypeMapping TypeName="realxpModel.venue_reviews">
+              <MappingFragment StoreEntitySet="venue_reviews">
+                <ScalarProperty Name="venue_review_id" ColumnName="venue_review_id" />
+                <ScalarProperty Name="venue_id" ColumnName="venue_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="venue_review_review" ColumnName="venue_review_review" />
+                <ScalarProperty Name="venue_review_rating" ColumnName="venue_review_rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="venues">
+            <EntityTypeMapping TypeName="realxpModel.venue">
+              <MappingFragment StoreEntitySet="venues">
+                <ScalarProperty Name="venue_id" ColumnName="venue_id" />
+                <ScalarProperty Name="venue_name" ColumnName="venue_name" />
+                <ScalarProperty Name="venue_country" ColumnName="venue_country" />
+                <ScalarProperty Name="venue_city" ColumnName="venue_city" />
+                <ScalarProperty Name="venue_state" ColumnName="venue_state" />
+                <ScalarProperty Name="venue_address_1" ColumnName="venue_address_1" />
+                <ScalarProperty Name="venue_address_2" ColumnName="venue_address_2" />
+                <ScalarProperty Name="venue_address_3" ColumnName="venue_address_3" />
+                <ScalarProperty Name="venue_postcode" ColumnName="venue_postcode" />
+                <ScalarProperty Name="venue_image" ColumnName="venue_image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{079B036E-00A1-4409-B4FF-DA44C6E0DFDF}</ProjectGuid>
+    <ProjectGuid>{19ADC527-C24F-48EC-AA31-CD42285D2F61}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>realXP</RootNamespace>
-    <AssemblyName>realXP</AssemblyName>
+    <RootNamespace>realxp</RootNamespace>
+    <AssemblyName>realxp</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -39,14 +39,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -117,6 +109,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -162,79 +160,84 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="camera.cs">
+      <DependentUpon>realxpModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="liveevent.cs">
+      <DependentUpon>realxpModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\camera.cs">
-      <DependentUpon>realxpModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\event.cs">
-      <DependentUpon>realxpModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\event_seats.cs">
-      <DependentUpon>realxpModels.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\realxpModels.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>realxpModels.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\realxpModels.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>realxpModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\realxpModels.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>realxpModels.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\seat.cs">
-      <DependentUpon>realxpModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\venue.cs">
-      <DependentUpon>realxpModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\venue_reviews.cs">
-      <DependentUpon>realxpModels.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="realxpModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>realxpModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="realxpModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>realxpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="realxpModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>realxpModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="seat.cs">
+      <DependentUpon>realxpModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="user.cs">
+      <DependentUpon>realxpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="user_address.cs">
+      <DependentUpon>realxpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="user_purchase.cs">
+      <DependentUpon>realxpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="venue.cs">
+      <DependentUpon>realxpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="venue_review.cs">
+      <DependentUpon>realxpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LiveEventController.cs" />
+    <Compile Include="Views\UserController.cs" />
     <Compile Include="Views\VenueController.cs" />
+    <Compile Include="Views\VenueReviewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Images\atmosphere.png" />
-    <Content Include="Content\Images\realxp-dark.png" />
-    <Content Include="Content\Images\realxp-light-navbar.png" />
-    <Content Include="Content\Images\venue_arsenal.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\realxpModels.edmx">
+    <EntityDeploy Include="realxpModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>realxpModels.Designer.cs</LastGenOutput>
+      <LastGenOutput>realxpModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\realxpModels.Context.tt">
+    <Content Include="realxpModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>realxpModels.edmx</DependentUpon>
-      <LastGenOutput>realxpModels.Context.cs</LastGenOutput>
+      <DependentUpon>realxpModel.edmx</DependentUpon>
+      <LastGenOutput>realxpModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\realxpModels.edmx.diagram">
-      <DependentUpon>realxpModels.edmx</DependentUpon>
+    <Content Include="realxpModel.edmx.diagram">
+      <DependentUpon>realxpModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\realxpModels.tt">
+    <Content Include="realxpModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>realxpModels.edmx</DependentUpon>
-      <LastGenOutput>realxpModels.cs</LastGenOutput>
+      <DependentUpon>realxpModel.edmx</DependentUpon>
+      <LastGenOutput>realxpModel.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -278,6 +281,21 @@
     <Content Include="Views\Venue\Details.cshtml" />
     <Content Include="Views\Venue\Edit.cshtml" />
     <Content Include="Views\Venue\Index.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\VenueReview\Create.cshtml" />
+    <Content Include="Views\VenueReview\Delete.cshtml" />
+    <Content Include="Views\VenueReview\Details.cshtml" />
+    <Content Include="Views\VenueReview\Edit.cshtml" />
+    <Content Include="Views\VenueReview\Index.cshtml" />
+    <Content Include="Views\LiveEvent\Create.cshtml" />
+    <Content Include="Views\LiveEvent\Delete.cshtml" />
+    <Content Include="Views\LiveEvent\Details.cshtml" />
+    <Content Include="Views\LiveEvent\Edit.cshtml" />
+    <Content Include="Views\LiveEvent\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -308,7 +326,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51282</DevelopmentServerPort>
+          <DevelopmentServerPort>59643</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:51282/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

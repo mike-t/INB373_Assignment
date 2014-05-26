@@ -1,0 +1,57 @@
+﻿@model IEnumerable<realxp.user>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.user_email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user_password_hash)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user_password_salt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user_firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user_lastname)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_password_hash)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_password_salt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_lastname)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.userID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.userID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.userID })
+        </td>
+    </tr>
+}
+
+</table>

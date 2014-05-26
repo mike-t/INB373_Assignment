@@ -1,4 +1,4 @@
-﻿@model realXP.Models.venue
+﻿@model realxp.venue
 
 @{
     ViewBag.Title = "Edit";
@@ -15,7 +15,7 @@
         <h4>venue</h4>
         <hr />
         @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.venue_id)
+        @Html.HiddenFor(model => model.venueID)
 
         <div class="form-group">
             @Html.LabelFor(model => model.venue_name, new { @class = "control-label col-md-2" })

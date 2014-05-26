@@ -1,0 +1,56 @@
+﻿@model realxp.venue_review
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>venue_review</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.venue_review_review)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.venue_review_review)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.venue_review_rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.venue_review_rating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user.user_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.user_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.venue.venue_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.venue.venue_name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

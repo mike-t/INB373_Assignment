@@ -1,0 +1,72 @@
+﻿@model realxp.liveevent
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>liveevent</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.liveevent_start_time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.liveevent_start_time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.liveevent_end_time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.liveevent_end_time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.liveevent_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.liveevent_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.liveevent_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.liveevent_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.liveevent_image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.liveevent_image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.venue.venue_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.venue.venue_name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
