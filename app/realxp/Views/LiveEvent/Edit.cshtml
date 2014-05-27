@@ -1,10 +1,10 @@
 ﻿@model realxp.liveevent
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Event";
 }
 
-<h2>Edit</h2>
+<h2>@ViewBag.Title</h2>
 
 
 @using (Html.BeginForm())
@@ -54,6 +54,14 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.liveevent_description)
                 @Html.ValidationMessageFor(model => model.liveevent_description)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.liveevent_price, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.liveevent_price)
+                @Html.ValidationMessageFor(model => model.liveevent_price)
             </div>
         </div>
 

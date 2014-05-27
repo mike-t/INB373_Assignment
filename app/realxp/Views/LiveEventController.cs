@@ -15,6 +15,8 @@ namespace realxp.Views
         private realxpEntities db = new realxpEntities();
 
         // GET: /LiveEvent/
+        // enable output caching for 10 seconds
+        [OutputCache(Duration = 10, VaryByParam = "none")]
         public ActionResult Index()
         {
             var liveevents = db.liveevents.Include(l => l.venue);
@@ -22,6 +24,8 @@ namespace realxp.Views
         }
 
         // GET: /LiveEvent/Details/5
+        // enable output caching for 10 seconds
+        [OutputCache(Duration = 10, VaryByParam = "id")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -48,7 +52,7 @@ namespace realxp.Views
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="liveeventID,venueID,liveevent_start_time,liveevent_end_time,liveevent_name,liveevent_description,liveevent_image")] liveevent liveevent)
+        public ActionResult Create([Bind(Include="liveeventID,venueID,liveevent_start_time,liveevent_end_time,liveevent_name,liveevent_description,liveevent_image,liveevent_price")] liveevent liveevent)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +86,7 @@ namespace realxp.Views
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="liveeventID,venueID,liveevent_start_time,liveevent_end_time,liveevent_name,liveevent_description,liveevent_image")] liveevent liveevent)
+        public ActionResult Edit([Bind(Include="liveeventID,venueID,liveevent_start_time,liveevent_end_time,liveevent_name,liveevent_description,liveevent_image,liveevent_price")] liveevent liveevent)
         {
             if (ModelState.IsValid)
             {

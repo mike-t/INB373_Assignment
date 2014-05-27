@@ -29,6 +29,7 @@
           <Property Name="liveevent_name" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="liveevent_description" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="liveevent_image" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="liveevent_price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="seat">
           <Key>
@@ -475,6 +476,7 @@
           <Property Name="liveevent_image" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="venue" Relationship="realxpContext.FK__event__venueID1" FromRole="liveevent1" ToRole="venue" />
           <NavigationProperty Name="user_purchase" Relationship="realxpContext.FK__user_purchase__liveeventID" FromRole="liveevent" ToRole="user_purchase" />
+          <Property Name="liveevent_price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
         <Association Name="FK__event__venueID1">
           <End Type="realxpContext.venue" Role="venue" Multiplicity="1" />
@@ -631,6 +633,7 @@
           <EntitySetMapping Name="liveevents">
             <EntityTypeMapping TypeName="realxpContext.liveevent">
               <MappingFragment StoreEntitySet="liveevent">
+                <ScalarProperty Name="liveevent_price" ColumnName="liveevent_price" />
                 <ScalarProperty Name="liveevent_image" ColumnName="liveevent_image" />
                 <ScalarProperty Name="liveevent_description" ColumnName="liveevent_description" />
                 <ScalarProperty Name="liveevent_name" ColumnName="liveevent_name" />

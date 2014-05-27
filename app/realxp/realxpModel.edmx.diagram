@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2712ccb53fc54fde919a35c29cfa12b7" Name="Diagram1" ZoomLevel="48">
+      <Diagram DiagramId="2712ccb53fc54fde919a35c29cfa12b7" Name="Diagram1" ZoomLevel="121">
         <EntityTypeShape EntityType="realxpContext.camera" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="realxpContext.seat" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="realxpContext.user" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
@@ -18,7 +18,6 @@
         <AssociationConnector Association="realxpContext.FK__venue_review__venueID" ManuallyRouted="false" />
         <AssociationConnector Association="realxpContext.FK__event__venueID1" />
         <EntityTypeShape EntityType="realxpContext.liveevent" Width="1.5" PointX="3" PointY="5" />
-        <AssociationConnector Association="realxpContext.FK__event__venueID1" />
         <EntityTypeShape EntityType="realxpContext.user_purchase" Width="1.5" PointX="5.25" PointY="7" />
         <AssociationConnector Association="realxpContext.FK__user_purchase__seatID" />
         <AssociationConnector Association="realxpContext.FK__user_purchase__userID" />
