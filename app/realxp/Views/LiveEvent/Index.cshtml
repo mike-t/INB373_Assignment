@@ -49,7 +49,7 @@
         </td>
         <td>
             <p><strong>@Html.DisplayFor(modelItem => item.liveevent_price)</strong></p>
-            <p><a class="btn btn-danger" href="@Url.Action("Index", "UserPurchase", new { id = item.liveeventID })">Buy now</a></p>
+            <p><a class="btn btn-danger" href="#" onclick="alert('Send purchase of event id: @Html.DisplayFor(modelItem => item.liveeventID) to payment gateway.')">Buy now</a></p>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.liveevent_description)
