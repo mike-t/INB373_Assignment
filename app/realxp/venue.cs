@@ -30,11 +30,11 @@ namespace realxp
         public string venue_city { get; set; }
         [DisplayName("State"), DataType(DataType.Text), StringLength(50)]
         public string venue_state { get; set; }
-        [DisplayName("Address 1"), DataType(DataType.Text), StringLength(100)]
+        [DisplayName("Address"), DataType(DataType.Text), StringLength(100)]
         public string venue_address_1 { get; set; }
-        [DisplayName("Address 2"), DataType(DataType.Text), StringLength(100)]
+        [DisplayName("Address Line 2"), DataType(DataType.Text), StringLength(100)]
         public string venue_address_2 { get; set; }
-        [DisplayName("Address 3"), DataType(DataType.Text), StringLength(100)]
+        [DisplayName("Address Line 3"), DataType(DataType.Text), StringLength(100)]
         public string venue_address_3 { get; set; }
         [DisplayName("Postcode"), DataType(DataType.PostalCode)]
         public string venue_postcode { get; set; }
