@@ -52,7 +52,7 @@ namespace realxp
         [DisplayName("Promotional Image"), DataType(DataType.Upload)]
         public string liveevent_image { get; set; }
         // stub for daterange property
-        [DisplayName("Date"), DataType(DataType.Text)]
+        [DisplayName("Date"), DataType(DataType.Text), StringLength(250)]
         public string liveevent_daterange { get; set; }
     
         public virtual venue venue { get; set; }
